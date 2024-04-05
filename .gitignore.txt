@@ -1,0 +1,9 @@
+/celebdf_dataset_url.txt
+
+Dataset/
+Dataset-Small/
+Preprocessing/Face-Crop/
+Preprocessing/Face_Crop_Small/
+Preprocessing/Predict_Test/
+Preprocessing/Predict_Warehouse/
+Preprocessing/trained-model-small.pt
