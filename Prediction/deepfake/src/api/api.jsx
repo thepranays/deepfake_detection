@@ -15,10 +15,12 @@ const FileUpload = () => {
     formData.append('file', file);
 
     try {
-      const response = await axios.post('http://127.0.0.1:5050/', formData, {
+      const response = await axios.post('http://127.0.0.1:5000/', formData, {
+        method: 'POST',
         headers: {
           'Content-Type': 'multipart/form-data'
         }
+
       });
       setResult(response.data);
     } catch (error) {
@@ -27,7 +29,7 @@ const FileUpload = () => {
   };
 
   return (
-<div className=''>
+    <div className=''>
       <div className="glass-panel">
         <div className="file-upload-form">
           <div className="file-upload-input">
@@ -53,7 +55,7 @@ const FileUpload = () => {
           )}
         </div>
       </div>
-      </div>
+    </div>
   );
 };
 

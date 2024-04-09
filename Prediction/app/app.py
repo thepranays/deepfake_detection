@@ -1,6 +1,6 @@
 import os
 import logging
-from flask import Flask,request,Response,redirect,flash
+from flask import Flask,request,Response,redirect,flash,jsonify
 from flask_cors import CORS,cross_origin
 from PredictModel import PredictModel
 from werkzeug.utils import secure_filename
@@ -58,11 +58,16 @@ def prediction():
             y_hat="Real" if y_hat==1  else "Fake"
             os.remove(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             print(y_hat,confi)
-            return f""" <!doctype html>
-            <title>Result</title>
-            <h1>Result:{y_hat} with confidence of {confi}</h1>
-        </form>
-    """
+            data={
+                "result":y_hat,
+                "confidence":confi,
+            }
+            return jsonify(data)
+    #         return f""" <!doctype html>
+    #         <title>Result</title>
+    #         <h1>Result:{y_hat} with confidence of {confi}</h1>
+    #     </form>
+    # """
     return '''
     <!doctype html>
     <title>Upload new File</title>
