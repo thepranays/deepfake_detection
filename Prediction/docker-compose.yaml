@@ -1,9 +1,19 @@
 version: "3"
 services:
 
+  react-app-service:
+    container_name: react-app
+    image: dreamfist/react-dd-app:latest
+    ports:
+      - "3006:3006"
+    restart: unless-stopped
+    networks:
+      service-network:
+
+
   flask-app-service:
     container_name: flask-app
-    image: dreamfist/flask-dd-app
+    image: dreamfist/flask-dd-app:latest
     ports:
       - "5000:5000"
     restart: unless-stopped
