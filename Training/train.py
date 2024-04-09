@@ -66,7 +66,7 @@ train_transforms = transforms.Compose([ #convert each frame into tensor
                                         transforms.Resize((im_size,im_size)),
                                         transforms.ToTensor(),
                                         transforms.Normalize(mean,std)])
-video_files =  glob.glob('./Face_Crop_Small/*.mp4')
+video_files =  glob.glob('C:/Users/PRANAY/Desktop/deep learning project/Preprocessing/Face_Crop_Small/*.mp4')
 #video_fil =  glob.glob('/Face_Crop/*.mp4')
 
 print("Total no of videos :" , len(video_files))
@@ -85,7 +85,7 @@ print((len(video_files) - count))
 # %%
 #to load preprocessod video to memory
 #video_files =  glob.glob('./Face_Crop/*.mp4')
-video_files =  glob.glob('./Face_Crop_Small/*.mp4')
+video_files =  glob.glob('C:/Users/PRANAY/Desktop/deep learning project/Preprocessing/Face_Crop_Small/*.mp4')
 random.shuffle(video_files)
 random.shuffle(video_files)
 frame_count = []
@@ -213,7 +213,7 @@ val_data = video_dataset(valid_videos,labels,sequence_length = 20,transform = tr
 train_loader = DataLoader(train_data,batch_size = batch_size,shuffle = True,num_workers = 0) #earlier num works 4 for multiprocessing 
 valid_loader = DataLoader(val_data,batch_size = batch_size,shuffle = True,num_workers = 0) #earlier num works 4 for multiprocessing 
 image,label = train_data[0]
-im_plot(image[0,:,:,:])
+#im_plot(image[0,:,:,:])
 
 # %%
 #Model with required features
