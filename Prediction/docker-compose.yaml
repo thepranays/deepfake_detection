@@ -9,6 +9,9 @@ services:
     restart: unless-stopped
     volumes:
       - ./app:/app
+    networks:
+      service-network:
+
 
   prometheus:
     image: prom/prometheus:latest
@@ -21,6 +24,9 @@ services:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
     depends_on:
       - flask-app-service
+    networks:
+      service-network:
+
 
   grafana:
     image: grafana/grafana-oss:latest
@@ -37,3 +43,10 @@ services:
     environment:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
+    networks:
+      service-network:
+
+
+networks:
+  service-network:
+    name: service-network
