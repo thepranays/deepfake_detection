@@ -1,9 +1,6 @@
 version: "3"
 services:
 
-  nginx-service:
-    image: imageName
-
   flask-app-service:
     container_name: flask-app
     image: dreamfist/flask-dd-app
