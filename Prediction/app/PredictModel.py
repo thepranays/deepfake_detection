@@ -148,7 +148,7 @@ class PredictModel():
                                                 transforms.ToTensor(),
                                                 transforms.Normalize(mean,std)])
         self.model =Model(2).cuda() if isGpuAvailable else Model(2).cpu()
-        self.path_to_model = './trained-model.pt'
+        self.path_to_model = '../trained-model.pt'
         self.model.load_state_dict(torch.load(self.path_to_model,map_location=device))
         self.model.eval()
 

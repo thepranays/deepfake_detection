@@ -5,6 +5,7 @@ LABEL maintainer="Pranay Payal"
 WORKDIR /app
 
 COPY './requirements.txt' .
+COPY './trained-model.pt' ..
 
 # RUN apt-get install libgtk2.0-dev pkg-config -yqq 
 
