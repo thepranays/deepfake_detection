@@ -47,6 +47,18 @@ services:
       service-network:
 
 
+  nginx_service:
+    image: nginx:latest
+    container_name: nginx_service
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    depends_on:
+      - flask-app-service
+    networks:
+      service-network:
+
+
 networks:
   service-network:
     name: service-network
