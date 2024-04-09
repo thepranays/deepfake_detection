@@ -1,0 +1,42 @@
+version: "3"
+services:
+
+  nginx-service:
+    image: imageName
+
+  flask-app-service:
+    container_name: flask-app
+    image: dreamfist/flask-dd-app
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    volumes:
+      - ./app:/app
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    restart: unless-stopped
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    depends_on:
+      - flask-app-service
+
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    links:
+      - prometheus:prometheus
+    volumes:
+      - ./grafana:/var/lib/grafana
+    depends_on:
+      - flask-app-service
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
