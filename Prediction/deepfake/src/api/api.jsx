@@ -17,7 +17,7 @@ const FileUpload = () => {
     try {
       //Hardcoded ip , if DHCP changes ipv4 then this code fails
       //10.100.41.168  10.50.59.227
-      const response = await axios.post('http://10.100.41.168:5000/', formData, {
+      const response = await axios.post('http://10.100.147.70:5000/', formData, {
 
         headers: {
           'Content-Type': 'multipart/form-data'
